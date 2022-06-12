@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { Typography } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
+  { field: 'id', width: 70 },
+  { field: 'firstName', width: 130 },
+  { field: 'lastName',  width: 130 },
   {
     field: 'age',
     headerName: 'Age',
@@ -34,12 +39,52 @@ const rows = [
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
-export function DataTable() {
+export function DataTable(props) {
+  var table = props.table;
+  function getColumns(table){
+    var columns = [];
+    columns.push({ field: 'id', width: 70 });
+    table.fields.forEach(field => {
+      columns.push({
+        field: field.name,
+        headerName: field.name,
+        type: field.type,
+        width: 100,
+      });
+    });
+    return columns;
+  }
+  function handleOnAddRecord(event) {
+    event.preventDefault();
+    var newRow = {};
+    table.fields.forEach(field => {
+      newRow[field.name] = '';
+    }
+    );
+    table.rows.push(newRow);
+  }
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 300, width: '100%' }} className="mb-14">
+      <div className='flex'>
+      <Typography
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+          
+        >
+          {table.name}
+        </Typography>
+
+        <Tooltip title='Add record'>
+          <IconButton onClick={handleOnAddRecord}>
+            <AddIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
       <DataGrid
-        rows={rows}
-        columns={columns}
+        rows={table.rows}
+        columns={getColumns(table)}
         pageSize={5}
         rowsPerPageOptions={[5]}
     
