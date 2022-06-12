@@ -1,17 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
-
-const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
-
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
-};
-
+import Login from "./components/login";
+import Home from "./components/home";
 
 function App() {
+  const {isLoading}=useAuth0();
+  if(isLoading)return <div>loading...</div>
   return (
     <div>
-      <h1 className="text-green-600 text-2xl">Hello world!</h1>
-      <LoginButton />
+      <Login />
+      <Home/>
     </div>
   );
 }
