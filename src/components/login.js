@@ -4,7 +4,10 @@ import React from 'react'
 function Login() {
     const {loginWithRedirect,isAuthenticated}=useAuth0();
   return !isAuthenticated &&(
-     <button  onClick={()=>loginWithRedirect()}>Login</button>
+    <div>
+        <button className='rounded-xl bg-blue-500 px-5 py-3' onClick={()=>loginWithRedirect()}>Login</button>
+    </div>
+     
   )
 }
 
