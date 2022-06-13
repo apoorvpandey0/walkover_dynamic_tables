@@ -5,7 +5,7 @@ function Logout() {
     const { logout, isAuthenticated } = useAuth0();
     return (isAuthenticated &&
         <div>
-            <button className='rounded-xl bg-blue-500 px-5 py-3' onClick={() => logout()}>Logout</button>
+            <button className='rounded-xl bg-blue-400 px-5 py-3' onClick={() => logout()}>Logout</button>
         </div>
     )
 }

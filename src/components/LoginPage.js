@@ -10,10 +10,8 @@ function LoginPage() {
             <div className='py-20 bg-slate-50 h-80 w-2/5 rounded-2xl grid place-items-center'>
                 <h1 className='font-bold'>DashBoard</h1>
                 <Login/>
-                
             </div>
         </div>
-
     )
 }
 
