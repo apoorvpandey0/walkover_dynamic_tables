@@ -1,3 +1,4 @@
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./components/home";
 import LoginPage from "./components/LoginPage";
@@ -13,3 +14,4 @@ function App() {
 }
 
 export default App;
+
