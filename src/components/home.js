@@ -11,6 +11,10 @@ function Home() {
     function handleAddNewTable(name, fields) {
         setTables([...tables, { id: tables.length, name: name, fields: fields, rows: [] }]);
     }
+
+    function updateTable(id, table) {
+        setTables(tables.map(t => t.id === id ? table : t));
+    }
     return (
         <div className=''>
             <nav class="bg-purple-800 text-white justify-between flex">
@@ -20,10 +24,10 @@ function Home() {
                 </ul>
             </nav>
             <div className='grid place-items-center h-20'>
-                 <AddTable addNewTable={handleAddNewTable} />
+                <AddTable addNewTable={handleAddNewTable} />
             </div>
-            
-            {tables.map(table => <DataTable table={table} />)}
+
+            {tables.map(table => <DataTable table={table} updateTable={updateTable} />)}
             {console.log(user)}
         </div>
     )
