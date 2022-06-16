@@ -29,8 +29,7 @@ Now a folder will be created with name, node modules, then type
 ## Teck-Stack
 Front-End : React
 Other tools and platforms :
-i) Balsamiq cloud tool to design wireframe
-ii) Used Heroku for deployment
+-> Used Heroku for deployment
 
 ## Contributor
 @krishnmohan19
